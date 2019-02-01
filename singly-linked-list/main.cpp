@@ -5,6 +5,17 @@ struct item {
     item * pNext;
 };
 
+item * findIter(item * pHead, const T & value) {
+    if(!pHead)
+        return nullptr;
+    while(pHead) {
+        if(value == pHead->value)
+            return pHead;
+        pHead = pHead->pNext;
+    }
+    return nullptr;
+}
+
 void addSortedRec(item * & pHead, const T & value) {
     if(!pHead) {
         pHead = new item { value, nullptr };
