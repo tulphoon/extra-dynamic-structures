@@ -75,4 +75,10 @@ Temporary Items
 # Ignore all local history of files
 .history
 
+## Obj-C/Swift specific
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
 # End of https://www.gitignore.io/api/c++,macos,visualstudiocode
