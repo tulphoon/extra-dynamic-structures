@@ -5,6 +5,19 @@ struct item {
     item * pNext;
 };
 
+void addSortedRec(item * & pHead, const T & value) {
+    if(!pHead) {
+        pHead = new item { value, nullptr };
+        return;
+    } else if(value <= pHead->value) {
+        addSortedRec(pHead->pNext, pHead->value);
+        pHead->value = value;
+        return;
+    } else {
+        addSortedRec(pHead->pNext, value);       
+    }
+}
+
 void addSortedIter(item * & pHead, const T & value) {
     if(!pHead) {
         pHead = new item { value, nullptr };
@@ -35,9 +48,13 @@ void addSortedIter(item * & pHead, const T & value) {
 int main(int argc, char const *argv[])
 {
     item * list = nullptr;
-    addSortedIter(list, 3); // inserting to empty list
-    addSortedIter(list, 1); // inserting on beginning of list
-    addSortedIter(list, 2); // inserting in between two elements
-    addSortedIter(list, 4); // inserting on the end
+    // addSortedIter(list, 3); // inserting to empty list
+    // addSortedIter(list, 1); // inserting on beginning of list
+    // addSortedIter(list, 2); // inserting in between two elements
+    // addSortedIter(list, 4); // inserting on the end
+    addSortedRec(list, 3); // inserting to empty list
+    addSortedRec(list, 1); // inserting on beginning of list
+    addSortedRec(list, 2); // inserting in between two elements
+    addSortedRec(list, 4); // inserting on the end
     return 0;
 }
