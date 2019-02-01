@@ -5,6 +5,14 @@ struct item {
     item * pNext;
 };
 
+item * findRec(item * pHead, const T & value) {
+    if(!pHead)
+        return nullptr;
+    if(value == pHead->value)
+        return pHead;
+    return findRec(pHead->pNext, value);
+}
+
 item * findIter(item * pHead, const T & value) {
     if(!pHead)
         return nullptr;
