@@ -5,6 +5,27 @@ struct item {
     item * pNext;
 };
 
+void remove(item * & pHead, const T & value) {
+    if(!pHead)
+        return;
+    
+    auto p = pHead;
+    item * prevElem = nullptr;
+    while(p) {
+        if(value == p->value) {
+            if(!prevElem)
+                pHead = p->pNext;
+            else
+                prevElem->pNext = p->pNext;
+            delete p;
+            return;
+        }
+        prevElem = p;
+        p = p->pNext;
+    }
+    return;
+}
+
 void remove(item * & pHead, item * pToDelete) {
     if(!pHead)
         return;
@@ -96,6 +117,6 @@ int main(int argc, char const *argv[])
     addSortedRec(list, 1); // inserting on beginning of list
     addSortedRec(list, 2); // inserting in between two elements
     addSortedRec(list, 4); // inserting on the end
-    remove(list, findRec(list, 4));
+    remove(list, 3);
     return 0;
 }
