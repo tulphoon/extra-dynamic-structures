@@ -18,8 +18,9 @@ void removeAll(item * & pHead, T value) {
             else
                 prevElem->pNext = p->pNext;
             delete p;
+        } else {
+            prevElem = p;
         }
-        prevElem = p;
         p = p->pNext;
     }
     return;
@@ -134,6 +135,7 @@ int main(int argc, char const *argv[])
     // addSortedIter(list, 2); // inserting in between two elements
     // addSortedIter(list, 4); // inserting on the end
     addSortedRec(list, 3); // inserting to empty list
+    addSortedRec(list, 3);
     addSortedRec(list, 1); // inserting on beginning of list
     addSortedRec(list, 2); // inserting in between two elements
     addSortedRec(list, 4); // inserting on the end
